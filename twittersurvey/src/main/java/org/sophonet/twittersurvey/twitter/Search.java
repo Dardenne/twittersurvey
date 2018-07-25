@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Date;
@@ -36,8 +37,19 @@ public class Search {
     private TweetRepository tweetRepository;
     @Autowired
     private TwitterUserRepository userRepository;
+    private static final String OS = System.getProperty("os.name").toLowerCase();
+    private static final String IMAGE_DIR = createImageDir();
 
     private Search() {
+        createImageDir();
+    }
+
+    private static String createImageDir() {
+        File imageDir = new File(isWindows() ? "d:/temp/twitter" : "/home/dardenne/temp/twitter");
+        if (!imageDir.exists()) {
+            imageDir.mkdir();
+        }
+        return imageDir.getAbsolutePath() + (isWindows() ? "\\" : "/");
     }
 
     public static Search getInstance() {
@@ -83,7 +95,7 @@ public class Search {
         List<Status> statuses;
         int i = 0;
         paging = new Paging(1, 200);
-        userRepository.save(new TwitterUser("_LesPatriotes", new Date()));
+        userRepository.save(new TwitterUser(user, new Date()));
         statuses = twitter.getUserTimeline(user, paging);
 
         for (Status status : statuses) {
@@ -97,24 +109,21 @@ public class Search {
                 for (MediaEntity m : status.getMediaEntities()) {
                     try {
                         URL url = new URL(m.getMediaURL());
-                        InputStream in = new BufferedInputStream(url.openStream());
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        byte[] buf = new byte[1024];
-                        int n = 0;
-                        while (-1 != (n = in.read(buf))) {
-                            out.write(buf, 0, n);
+                        ByteArrayOutputStream out;
+                        try (InputStream in = new BufferedInputStream(url.openStream())) {
+                            out = new ByteArrayOutputStream();
+                            byte[] buf = new byte[1024];
+                            int n = 0;
+                            while (-1 != (n = in.read(buf))) {
+                                out.write(buf, 0, n);
+                            }   out.close();
                         }
-                        out.close();
-                        in.close();
                         byte[] response = out.toByteArray();
-                        File file = new File("d:/temp/twitter");
-                        if (!file.exists()) {
-                            file.mkdir();
+
+                        try (FileOutputStream fos = new FileOutputStream(new File(IMAGE_DIR + tweet.getId()) + "." + getExtension(m.getType()))) {
+                            fos.write(response);
                         }
-                        FileOutputStream fos = new FileOutputStream(file.getAbsolutePath() + "\\" + tweet.getId() + "." + getExtension(m.getType()));
-                        fos.write(response);
-                        fos.close();
-                    } catch (Exception ex) {
+                    } catch (IOException ex) {
                         ex.printStackTrace();
                     }
                 }
@@ -142,5 +151,9 @@ public class Search {
         } else {
             return "err";
         }
+    }
+
+    private static boolean isWindows() {
+        return (OS.indexOf("win") >= 0);
     }
 }
