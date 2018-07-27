@@ -94,7 +94,7 @@ public class Search {
         Paging paging;
         List<Status> statuses;
         int i = 0;
-        paging = new Paging(1, 200);
+        paging = new Paging(1, 500);
         userRepository.save(new TwitterUser(user, new Date()));
         statuses = twitter.getUserTimeline(user, paging);
 
@@ -127,6 +127,7 @@ public class Search {
                         ex.printStackTrace();
                     }
                 }
+                
             } catch (Exception e) {
                 Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, e);
             }
