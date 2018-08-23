@@ -1,6 +1,7 @@
 package org.sophonet.twittersurvey;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.quartz.JobExecutionContext;
@@ -18,9 +19,10 @@ public class JobTwitterLoad implements org.quartz.Job {
     public JobTwitterLoad() {
     }
 
+    @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         List<String> list = List.of("_LesPatriotes", "f_philippot", "laurentwauquiez",
-                "d_philippot59", "AymeuGaulliste", "alexiscorbiere", "La_RepubliqueEM", "Thomas_Laval");
+                "d_philippot59", "AymeuGaulliste", "alexiscorbiere", "La_RepubliqueEM", "Thomas_Laval","alainavello", "InsoumisJeunes");
         list.forEach((String user) -> {
             try {
                 search.searchTweetsUser(user);

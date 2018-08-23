@@ -123,13 +123,13 @@ public class Search {
                         try (FileOutputStream fos = new FileOutputStream(new File(IMAGE_DIR + tweet.getId()) + "." + getExtension(m.getType()))) {
                             fos.write(response);
                         }
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
+                    } catch (IOException e) {
+                        Logger.getLogger(Search.class.getName()).log(Level.SEVERE, user, e);
                     }
                 }
                 
             } catch (Exception e) {
-                Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(Search.class.getName()).log(Level.SEVERE, user, e);
             }
         }
 
@@ -143,14 +143,15 @@ public class Search {
     }
 
     private String getExtension(String type) {
-        if (type.equals("photo")) {
-            return "jpg";
-        } else if (type.equals("video")) {
-            return "mp4";
-        } else if (type.equals("animated_gif")) {
-            return "gif";
-        } else {
-            return "err";
+        switch (type) {
+            case "photo":
+                return "jpg";
+            case "video":
+                return "mp4";
+            case "animated_gif":
+                return "gif";
+            default:
+                return "err";
         }
     }
 
