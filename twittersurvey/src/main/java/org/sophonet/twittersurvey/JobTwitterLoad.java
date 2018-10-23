@@ -21,7 +21,7 @@ public class JobTwitterLoad implements org.quartz.Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         List<String> list = List.of("_LesPatriotes", "f_philippot", "laurentwauquiez",
-                "d_philippot59", "AymeuGaulliste", "alexiscorbiere", "La_RepubliqueEM", "Thomas_Laval","alainavello", "InsoumisJeunes");
+                "d_philippot59", "AymeuGaulliste", "alexiscorbiere", "La_RepubliqueEM", "Thomas_Laval","alainavello", "InsoumisJeunes", "GilbertCollard");
         list.forEach((String user) -> {
             try {
                 search.searchTweetsUser(user);
