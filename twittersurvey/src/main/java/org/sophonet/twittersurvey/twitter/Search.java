@@ -101,7 +101,7 @@ public class Search {
         for (Status status : statuses) {
             try {
 
-                String fmt = ++i + " " + status.getId() + " " + status.getCreatedAt() + "@" + status.getUser().getScreenName() + " - " + status.getText();
+                String fmt = ++i + " " + status.getId() + " " + status.getCreatedAt() + "@" + status.getUser().getScreenName() + " - length = " + status.getText().length() + " - " + status.getText();
                 Logger.getLogger(Search.class.getName()).log(Level.INFO, fmt);
                 Tweet tweet = new Tweet(Long.toString(status.getId()), status.getCreatedAt(), status.getUser().getScreenName(), status.getUser().getName(), status.getText());
                 tweetRepository.delete(Long.toString(status.getId()));

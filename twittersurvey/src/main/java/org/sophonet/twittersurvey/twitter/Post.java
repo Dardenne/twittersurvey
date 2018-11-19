@@ -1,6 +1,5 @@
 package org.sophonet.twittersurvey.twitter;
 
-import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 

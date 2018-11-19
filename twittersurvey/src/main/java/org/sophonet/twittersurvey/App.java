@@ -78,10 +78,6 @@ public class App implements CommandLineRunner {
         };
     }
 
-    private void twitterLoad0() {
-       
-    }
-
     private void twitterLoad() {
         JobTwitterLoad.search = search;
         // define the job and tie it to our MyJob class

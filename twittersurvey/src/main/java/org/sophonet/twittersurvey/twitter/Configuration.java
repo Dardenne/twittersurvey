@@ -45,7 +45,8 @@ public class Configuration {
         //showHomeTimeline(twitter);
     }
 
-    private static void showHomeTimeline(Twitter twitter) {
+    @SuppressWarnings("unused")
+	private static void showHomeTimeline(Twitter twitter) {
 
         List<Status> statuses = null;
         try {

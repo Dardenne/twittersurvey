@@ -19,6 +19,7 @@ public class Tweet {
     private Date createdAt;
     private String screenName;
     private String name;
+    private int length;
     private String text;
 
     public Tweet() {
@@ -31,6 +32,7 @@ public class Tweet {
         this.screenName = screenName;
         this.name = name;
         this.text = text;
+        this.length = text.length();
     }
 
     @Override
@@ -78,4 +80,11 @@ public class Tweet {
         this.text = text;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
 }
