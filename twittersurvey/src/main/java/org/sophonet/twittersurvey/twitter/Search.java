@@ -156,6 +156,6 @@ public class Search {
     }
 
     private static boolean isWindows() {
-        return (OS.indexOf("win") >= 0);
+        return (OS.contains("win"));
     }
 }
