@@ -5,21 +5,21 @@
  */
 package org.sophonet.twittersurvey.controller;
 
-import org.sophonet.twittersurvey.data.TwitterUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.sophonet.twittersurvey.TwitterUserRepository;
+import org.sophonet.twittersurvey.data.TwitterUser;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  *
  * @author Dardenne
  */
 public class UserController {
-
     @Autowired
     private TwitterUserRepository userRepository;
 
     public void save(TwitterUser user) {
         userRepository.save(user);
     }
-
 }

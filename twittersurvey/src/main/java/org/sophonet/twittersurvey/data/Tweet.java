@@ -5,15 +5,16 @@
  */
 package org.sophonet.twittersurvey.data;
 
-import java.util.Date;
 import org.springframework.data.annotation.Id;
+
+import java.util.Date;
+
 
 /**
  *
  * @author Dardenne
  */
 public class Tweet {
-
     @Id
     public String _id;
     private Date createdAt;
@@ -23,10 +24,10 @@ public class Tweet {
     private String text;
 
     public Tweet() {
-
     }
 
-    public Tweet(String _id, Date createdAt, String screenName, String name, String text) {
+    public Tweet(String _id, Date createdAt, String screenName, String name,
+        String text) {
         this._id = _id;
         this.createdAt = createdAt;
         this.screenName = screenName;
@@ -37,7 +38,9 @@ public class Tweet {
 
     @Override
     public String toString() {
-        return "Tweet{" + "id=" + _id + ", createdAt=" + createdAt + ", screenName=" + screenName + ", name=" + name + ", text=" + text + '}';
+        return "Tweet{" + "id=" + _id + ", createdAt=" + createdAt +
+        ", screenName=" + screenName + ", name=" + name + ", text=" + text +
+        '}';
     }
 
     public String getId() {

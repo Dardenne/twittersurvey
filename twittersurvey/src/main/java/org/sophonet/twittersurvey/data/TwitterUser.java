@@ -5,21 +5,21 @@
  */
 package org.sophonet.twittersurvey.data;
 
-import java.util.Date;
 import org.springframework.data.annotation.Id;
+
+import java.util.Date;
+
 
 /**
  *
  * @author Dardenne
  */
 public class TwitterUser {
-
     @Id
     public String id;
     public Date lastLoaded;
 
     public TwitterUser() {
-
     }
 
     public TwitterUser(String id, Date lastLoaded) {
@@ -29,7 +29,7 @@ public class TwitterUser {
 
     @Override
     public String toString() {
-        return String.format("User[id = '%s', Last load date = '%s']", id, lastLoaded);
+        return String.format("User[id = '%s', Last load date = '%s']", id,
+            lastLoaded);
     }
-
 }
