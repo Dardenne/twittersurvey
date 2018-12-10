@@ -1,6 +1,8 @@
 package org.sophonet.twittersurvey.twitter;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -61,7 +63,7 @@ public class Configuration {
                 System.out.println("Above tweet URL : " + url);
             }
         } catch (TwitterException e) {
-            e.printStackTrace();
+            Logger.getLogger(Search.class.getName()).log(Level.SEVERE, user, e);
         }
     }
 
