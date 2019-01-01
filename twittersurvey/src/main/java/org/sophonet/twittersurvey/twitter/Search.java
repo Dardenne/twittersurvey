@@ -6,7 +6,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -116,7 +120,8 @@ public class Search {
                             int n = 0;
                             while (-1 != (n = in.read(buf))) {
                                 out.write(buf, 0, n);
-                            }   out.close();
+                            }
+                            out.close();
                         }
                         byte[] response = out.toByteArray();
 
@@ -127,7 +132,7 @@ public class Search {
                         Logger.getLogger(Search.class.getName()).log(Level.SEVERE, user, e);
                     }
                 }
-                
+
             } catch (Exception e) {
                 Logger.getLogger(Search.class.getName()).log(Level.SEVERE, user, e);
             }
@@ -157,5 +162,13 @@ public class Search {
 
     private static boolean isWindows() {
         return (OS.contains("win"));
+    }
+
+    private void testGoogle() {
+        var httpClient = HttpClient.newHttpClient();
+        var request = HttpRequest.newBuilder(URI.create("http://www.google.com")).build();
+        httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenAccept(System.out::println);
     }
 }

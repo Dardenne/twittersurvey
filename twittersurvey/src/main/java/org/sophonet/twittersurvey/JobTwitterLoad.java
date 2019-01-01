@@ -29,7 +29,7 @@ public class JobTwitterLoad implements org.quartz.Job {
         List<String> list = List.of("_LesPatriotes", "f_philippot", "laurentwauquiez",
                 "d_philippot59", "AymeuGaulliste", "alexiscorbiere", "La_RepubliqueEM",
                 "Thomas_Laval", "alainavello", "InsoumisJeunes", "GilbertCollard",
-                "F_deLapersonne", "JLMelenchon", "LPLdirect", "BFMTV");
+                "F_deLapersonne", "JLMelenchon", "LPLdirect", "BFMTV", "MireilledOrnano");
         list.forEach((String user) -> {
             try {
                 search.searchTweetsUser(user);
