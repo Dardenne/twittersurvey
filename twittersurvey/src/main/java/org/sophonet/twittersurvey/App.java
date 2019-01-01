@@ -90,7 +90,7 @@ public class App implements CommandLineRunner {
                 .withIdentity("trigger1", "group1")
                 .startNow()
                 .withSchedule(simpleSchedule()
-                        .withIntervalInMinutes(120)
+                        .withIntervalInMinutes(240)
                         .repeatForever())
                 .build();
 
