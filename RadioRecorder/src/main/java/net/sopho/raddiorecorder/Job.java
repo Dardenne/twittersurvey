@@ -49,6 +49,5 @@ public class Job implements org.quartz.Job {
         }
         recorder.close();
         recorder.stop();
-    }
-    
+    }   
 }
