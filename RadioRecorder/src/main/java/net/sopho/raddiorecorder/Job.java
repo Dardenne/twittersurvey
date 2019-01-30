@@ -30,6 +30,10 @@ public class Job implements org.quartz.Job {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.DD-HH.mm");
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
+        System.out.println("Satrt");
+        return;
+    }
+    private void startJob(JobExecutionContext context){
         JobKey jobKey = context.getJobDetail().getKey();
         Logger.getLogger("SimpleJob says: " + jobKey + " executing at " + new Date());
         calendar = Calendar.getInstance();
