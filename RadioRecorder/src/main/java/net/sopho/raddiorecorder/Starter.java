@@ -28,9 +28,11 @@ public class Starter {
         JobDetail job = newJob(Job.class)
                 .withIdentity("job1", "group1")
                 .build();
+        /*
         job.getJobDataMap().put(Job.duration, 60L);
         job.getJobDataMap().put(Job.url, "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3");
         job.getJobDataMap().put(Job.fileName, "europe1");
+        */
         /*
         var trigger = newTrigger()
                 .withIdentity("trigger1", "group1")
