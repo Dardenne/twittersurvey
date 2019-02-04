@@ -20,7 +20,24 @@
         <log4j.version>RELEASE</log4j.version>
         <quartz.version>2.3.0</quartz.version>
     </properties>
+    <!-- Spring boot parent dependency jar -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+    </parent>
     <dependencies>
+        <!-- Spring boot web mvc jar -->
+        <!-- Automatically adds tomcat and jackson-databind jars -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring boot jpa jar -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

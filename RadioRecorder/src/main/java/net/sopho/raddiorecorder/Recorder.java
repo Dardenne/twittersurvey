@@ -39,7 +39,7 @@ public class Recorder extends Thread {
     }
 
     @Override
-    public void start() {
+    public void run() {
 
         URLConnection conn;
         try {
@@ -50,7 +50,7 @@ public class Recorder extends Thread {
                 int len;
                 while ((len = is.read(buffer)) > 0) {
                     outstream.write(buffer, 0, len);
-                    System.out.println(len);
+                    // System.out.println(len);
                     outstream.flush();
                     if (stop) {
                         break;
