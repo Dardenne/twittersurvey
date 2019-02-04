@@ -10,18 +10,20 @@ import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
 public class CronTriggerExample {
+    private static final String OS = System.getProperty("os.name").toLowerCase();
 
     public static void main(String[] args) throws Exception {
         CronTriggerExample app = new CronTriggerExample();
         app.run(args);
-        
+
     }
+
     public void run(String[] args) throws Exception {
         JobDetail job = JobBuilder.newJob(Job.class)
                 .withIdentity("dummyJobName", "group1").build();
         job.getJobDataMap().put("duration", "60");
         job.getJobDataMap().put("url", "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3");
-        job.getJobDataMap().put("fileName", "d:/temp/europe1");
+        job.getJobDataMap().put("fileName", isWindows() ? "d:/temp/europe1" : "/home/dardenne/Musique/europe1");
         Trigger trigger = TriggerBuilder
                 .newTrigger()
                 .withIdentity("dummyTriggerName", "group1")
@@ -34,5 +36,9 @@ public class CronTriggerExample {
         scheduler.start();
         scheduler.scheduleJob(job, trigger);
 
+    }
+
+    private static boolean isWindows() {
+        return (OS.contains("win"));
     }
 }
