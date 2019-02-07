@@ -23,7 +23,7 @@ public class CronTriggerExample {
                 .withIdentity("dummyJobName", "group1").build();
         job.getJobDataMap().put("duration", "60");
         job.getJobDataMap().put("url", "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3");
-        job.getJobDataMap().put("fileName", isWindows() ? "d:/temp/europe1" : "/home/dardenne/Musique/europe1");
+        job.getJobDataMap().put("fileName", isWindows() ? "d:/Musique/europe1" : "/home/dardenne/Musique/europe1");
         Trigger trigger = TriggerBuilder
                 .newTrigger()
                 .withIdentity("dummyTriggerName", "group1")
