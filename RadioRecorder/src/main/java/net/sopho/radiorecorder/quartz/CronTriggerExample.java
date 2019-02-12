@@ -1,4 +1,4 @@
-package com.mkyong.quartz;
+package net.sopho.radiorecorder.quartz;
 
 import net.sopho.raddiorecorder.Job;
 import org.quartz.CronScheduleBuilder;
@@ -21,14 +21,14 @@ public class CronTriggerExample {
     public void run(String[] args) throws Exception {
         JobDetail job = JobBuilder.newJob(Job.class)
                 .withIdentity("dummyJobName", "group1").build();
-        job.getJobDataMap().put("duration", "60");
+        job.getJobDataMap().put("duration", "15");
         job.getJobDataMap().put("url", "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3");
-        job.getJobDataMap().put("fileName", isWindows() ? "d:/Musique/europe1" : "/home/dardenne/Musique/europe1");
+        job.getJobDataMap().put("fileName", net.sopho.tools.System.isWindows() ? "d:/Musique/europe1" : "/home/dardenne/Musique/europe1");
         Trigger trigger = TriggerBuilder
                 .newTrigger()
                 .withIdentity("dummyTriggerName", "group1")
                 .withSchedule(
-                        CronScheduleBuilder.cronSchedule("0 59 0 ? * * *"))
+                        CronScheduleBuilder.cronSchedule("0 30 9 ? * * *"))
                 .build();
 
         //schedule it
@@ -36,9 +36,5 @@ public class CronTriggerExample {
         scheduler.start();
         scheduler.scheduleJob(job, trigger);
 
-    }
-
-    private static boolean isWindows() {
-        return (OS.contains("win"));
     }
 }

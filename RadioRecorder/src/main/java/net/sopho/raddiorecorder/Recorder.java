@@ -28,7 +28,6 @@ import java.util.logging.Logger;
  */
 public class Recorder extends Thread {
 
-    // "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3"
     private final String fileName;
     private final String url;
     private boolean stop;

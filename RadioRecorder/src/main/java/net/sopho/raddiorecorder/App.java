@@ -5,7 +5,7 @@
  */
 package net.sopho.raddiorecorder;
 
-import com.mkyong.quartz.CronTriggerExample;
+import net.sopho.radiorecorder.quartz.CronTriggerExample;
 import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

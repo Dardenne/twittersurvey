@@ -29,9 +29,10 @@ public class Job implements org.quartz.Job {
     private long startTime = 0;
     private long maxTime = 0;
     private Calendar calendar;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.DD-HH.mm");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.dd-HH.mm");
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(Job.class);
 
+    @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         JobDataMap dataMap = context.getJobDetail().getJobDataMap();
         url = dataMap.getString("url");
@@ -39,7 +40,6 @@ public class Job implements org.quartz.Job {
         duration = dataMap.getString("duration");
         System.out.println("Start");
         startJob(context);
-        return;
     }
 
     private void startJob(JobExecutionContext context) {
