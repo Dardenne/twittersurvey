@@ -21,14 +21,14 @@ public class CronTriggerExample {
     public void run(String[] args) throws Exception {
         JobDetail job = JobBuilder.newJob(Job.class)
                 .withIdentity("dummyJobName", "group1").build();
-        job.getJobDataMap().put("duration", "15");
+        job.getJobDataMap().put("duration", "60");
         job.getJobDataMap().put("url", "http://e1-live-mp3-128.scdn.arkena.com/europe1.mp3");
         job.getJobDataMap().put("fileName", net.sopho.tools.System.isWindows() ? "d:/Musique/europe1" : "/home/dardenne/Musique/europe1");
         Trigger trigger = TriggerBuilder
                 .newTrigger()
                 .withIdentity("dummyTriggerName", "group1")
                 .withSchedule(
-                        CronScheduleBuilder.cronSchedule("0 30 9 ? * * *"))
+                        CronScheduleBuilder.cronSchedule("0 0 1 ? * * *"))
                 .build();
 
         //schedule it
