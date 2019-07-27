@@ -12,6 +12,7 @@ package net.sopho.raddiorecorder;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+https://r8---sn-vg5obxcx-cg0e.googlevideo.com/videoplayback?lmt=1551687941672234&c=WEB&initcwndbps=1322500&ei=bxWAXKbCNYzB-gbBnZLYCg&fvip=6&txp=2216222&sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&expire=1551919568&ipbits=0&ratebypass=yes&itag=22&mn=sn-vg5obxcx-cg0e%2Csn-5hne6n7e&pl=16&mm=31%2C29&requiressl=yes&dur=28922.612&id=o-AOx43lTUcSspYUAi8Qfg_a1SVTvhvXhc4GKRCFRbLBxL&source=youtube&key=yt6&ip=94.109.184.81&mime=video%2Fmp4&mv=m&mt=1551897818&ms=au%2Crdu&signature=undefined
  */
 import java.io.File;
 import java.io.FileOutputStream;
