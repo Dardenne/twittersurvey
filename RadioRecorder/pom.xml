@@ -18,7 +18,7 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <querydsl.version>2.9.0</querydsl.version>
         <log4j.version>RELEASE</log4j.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
     </properties>
     <!-- Spring boot parent dependency jar -->
     <parent>
